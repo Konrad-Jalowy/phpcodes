@@ -15,4 +15,15 @@
                 return round($bytes / $gigabyte, $precision) . ' GB';
             }
         }
+
+        public static function isRegex($pattern) {
+            if(@preg_match($pattern, '') === false)
+                return false;
+            return true;
+        }
+        public static function isMatch($pattern, $string){
+            if(!static::isRegex($pattern))
+                return false;
+            return (bool)preg_match($pattern, $string);
+        }
     }
